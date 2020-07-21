@@ -12,4 +12,7 @@ function funcionEliminarPedido($request){
     $objCrepas= new Sensores();
     return $objCrepas->eliminarPedido($request);
 }
-
+function funcionActualizarPedido($request){
+    $objCrepas= new Sensores();
+    return $objCrepas->actualizarPedido($request);
+}

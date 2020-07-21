@@ -18,7 +18,7 @@ class Sensores
   {
     $req = json_decode($request->getbody());
 
-    $sql = "INSERT INTO Pedidos(idLista,fecha,TipoPedido,idProductos,Cliente,direccion) VALUES(:idLista,:fecha,:TipoPedido,:idProductos,:Cliente,:direccion)";
+    $sql = "INSERT INTO Pedidos(idLista,fecha,TipoPedido,idProductos,Cliente,direccion,estado,cant) VALUES(:idLista,:fecha,:TipoPedido,:idProductos,:Cliente,:direccion,:estado,:cant)";
     $response=new stdClass();
     //var_dump($req);
     //die();
@@ -30,6 +30,8 @@ class Sensores
         $statement->bindparam("idProductos", $req->idProductos);
         $statement->bindparam("Cliente", $req->Cliente);
         $statement->bindparam("direccion", $req->direccion);
+        $statement->bindparam("estado", $req->estado);
+        $statement->bindparam("cant", $req->cant);
         $statement->execute();
         $response=$req;
       } catch (Exception $e) {
@@ -77,4 +79,24 @@ class Sensores
     return json_encode($response);
   }
 
+  public function actualizarPedido($request)
+  {
+    $req = json_decode($request->getbody());
+    //var_dump($req);
+    //die();
+    //UPDATE alumnos SET curso='secundaria' WHERE curso='primaria'
+    $sql = "UPDATE Pedidos SET estado=:estado WHERE idPedidos=:idPedidos";
+    $response=new stdClass();
+      try {
+        $statement = $this->con->prepare($sql);
+        $statement->bindparam("idPedidos", $req->idPedidos);     
+        $statement->bindparam("estado", $req->estado); 
+        $statement->execute();        
+        $response->result="Se ha actualizado Producto ";
+      } catch (Exception $e) {
+        $response->mensaje = $e->getMessage();
+      }
+
+    return json_encode($response);
+  }
 }

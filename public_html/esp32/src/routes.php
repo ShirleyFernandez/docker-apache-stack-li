@@ -25,4 +25,5 @@ $app->group('/api', function () use ($app) {
     $app->post('/sensores','funcioninsertarPedido');
     $app->get('/sensores','funciongetListaData');
     $app->delete('/sensores','funcionEliminarPedido');
+    $app->patch('/sensores','funcionActualizarPedido');
 });
