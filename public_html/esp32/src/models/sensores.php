@@ -61,12 +61,13 @@ class Sensores
   public function eliminarPedido($request)
   {
     $req = json_decode($request->getbody());
-
-    $sql = "DELETE FROM Pedidos WHERE idProductos=:idProductos";
+    //var_dump($req);
+    //die();
+    $sql = "DELETE FROM Pedidos WHERE idPedidos=:idPedidos";
     $response=new stdClass();
       try {
         $statement = $this->con->prepare($sql);
-        $statement->bindparam("idProductos", $req->idProductos);      
+        $statement->bindparam("idPedidos", $req->idPedidos);      
         $statement->execute();        
         $response->result="Se ha logradro eliminar el Producto ";
       } catch (Exception $e) {
