@@ -4,7 +4,7 @@ function funcioninsertarPedido($request){
     $objCrepas= new Pedidos();
     return $objCrepas->insertarPedido($request);
 }
-function funciongetPedidosData($request){
+function funciongetPedidos($request){
     $objCrepas= new Pedidos();
     return $objCrepas->getPedidos($request);
 }

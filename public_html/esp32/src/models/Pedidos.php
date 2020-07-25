@@ -43,13 +43,12 @@ class Pedidos
   {
     $req = json_decode($request->getbody());
     
-    $sql = "SELECT VENTAS.id_Ventas, CATALOGO_PRODUCTOS.Nombre FROM VENTAS, CATALOGO_PRODUCTOS WHERE id_Ventas=:id_Ventas AND VENTAS.FK_idProd = CATALOGO_PRODUCTOS.idProductos;";
+    $sql = "SELECT idPedidos, Cantidad, Tipo_Pedido, Estado_Pedido, FK_idProd, FK_idCli FROM PEDIDOS";
     $response=new stdClass();
     //var_dump($req);
     //die();
       try {
-        $statement = $this->con->prepare($sql);
-        $statement->bindparam("id_Ventas", $req->id_Ventas);      
+        $statement = $this->con->prepare($sql);     
         $statement->execute();        
         $response->result=$statement->fetchall(PDO::FETCH_OBJ);
       } catch (Exception $e) {

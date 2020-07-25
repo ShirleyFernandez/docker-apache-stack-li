@@ -24,7 +24,7 @@ $app->group('/api', function () use ($app) {
 
     //Pedidos
     $app->post('/Pedidos','funcioninsertarPedido');
-    $app->get('/Pedidos','funciongetPedidosData');
+    $app->get('/Pedidos','funciongetPedidos');
     $app->delete('/Pedidos','funcionEliminarPedido');
     $app->patch('/Pedidos','funcionActualizarPedido');
 
@@ -38,5 +38,8 @@ $app->group('/api', function () use ($app) {
     $app->get('/Ventas','funciongetVentas');
     $app->delete('/Ventas','funcionEliminarVenta');
 
-    
+    //Productos
+    $app->post('/Productos','funcioninsertarProducto');
+    $app->get('/Productos','funciongetProductos');
+    $app->delete('/Productos','funcionEliminarProducto');
 });

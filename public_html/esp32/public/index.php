@@ -44,6 +44,7 @@ include 'funciones/calculadora.php';
 include 'funciones/Pedidos.php';
 include 'funciones/Clientes.php';
 include 'funciones/Ventas.php';
+include 'funciones/Productos.php';
 
 // Run app
 $app->run();

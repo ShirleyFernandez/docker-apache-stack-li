@@ -1,5 +1,5 @@
 <?php
-class Pedidos
+class Ventas
 {
   private $con;
 
