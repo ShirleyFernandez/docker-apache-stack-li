@@ -18,7 +18,7 @@ class Pedidos
   {
     $req = json_decode($request->getbody());
 
-    $sql = "INSERT INTO PEDIDOS(idPedidos,Cantidad,Tipo_Pedido,Estado_Pedido,FK_idProd,FK_idCli) VALUES(:idPedidos,:Cantidad,:Tipo_Pedido,:Estado_Pedido,:FK_idProd,:FK_idCli)";
+    $sql = " INSERT INTO PEDIDOS(idPedidos,Cantidad,Tipo_Pedido,Estado_Pedido,FK_idProd,FK_idCli) VALUES(:idPedidos,:Cantidad,:Tipo_Pedido,:Estado_Pedido,:FK_idProd,:FK_idCli)";
     $response=new stdClass();
     //var_dump($req);
     //die();
