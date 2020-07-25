@@ -1,18 +1,18 @@
 <?
-require __DIR__ . '/../../src/models/sensores.php';
+require __DIR__ . '/../../src/models/Crepas.php';
 function funcioninsertarPedido($request){
-    $objCrepas= new Sensores();
+    $objCrepas= new Pedidos();
     return $objCrepas->insertarPedido($request);
 }
-function funciongetListaData($request){
-    $objCrepas= new Sensores();
-    return $objCrepas->getLista($request);
+function funciongetPedidosData($request){
+    $objCrepas= new Pedidos();
+    return $objCrepas->getPedidos($request);
 }
 function funcionEliminarPedido($request){
-    $objCrepas= new Sensores();
+    $objCrepas= new Pedidos();
     return $objCrepas->eliminarPedido($request);
 }
 function funcionActualizarPedido($request){
-    $objCrepas= new Sensores();
+    $objCrepas= new Pedidos();
     return $objCrepas->actualizarPedido($request);
 }

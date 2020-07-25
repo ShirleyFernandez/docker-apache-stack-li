@@ -22,8 +22,21 @@ $app->group('/api', function () use ($app) {
     //REGISTROUSUARIOS
     $app->post('/rutacalculadora','funcionCalculadora');
 
-    $app->post('/sensores','funcioninsertarPedido');
-    $app->get('/sensores','funciongetListaData');
-    $app->delete('/sensores','funcionEliminarPedido');
-    $app->patch('/sensores','funcionActualizarPedido');
+    //Pedidos
+    $app->post('/Pedidos','funcioninsertarPedido');
+    $app->get('/Pedidos','funciongetPedidosData');
+    $app->delete('/Pedidos','funcionEliminarPedido');
+    $app->patch('/Pedidos','funcionActualizarPedido');
+
+    //Clientes
+    $app->post('/Clientes','funcioninsertarCliente');
+    $app->get('/Clientes','funciongetClientes');
+    $app->delete('/Clientes','funcionEliminarCliente');
+
+    //Ventas
+    $app->post('/Ventas','funcioninsertarVenta');
+    $app->get('/Ventas','funciongetVentas');
+    $app->delete('/Ventas','funcionEliminarVenta');
+
+    
 });
