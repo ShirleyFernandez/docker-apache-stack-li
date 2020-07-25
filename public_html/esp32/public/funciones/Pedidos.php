@@ -1,5 +1,5 @@
 <?
-require __DIR__ . '/../../src/models/Crepas.php';
+require __DIR__ . '/../../src/models/Pedidos.php';
 function funcioninsertarPedido($request){
     $objCrepas= new Pedidos();
     return $objCrepas->insertarPedido($request);
