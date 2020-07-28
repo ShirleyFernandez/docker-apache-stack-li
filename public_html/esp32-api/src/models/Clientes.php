@@ -1,4 +1,15 @@
 <?php
+class Cliente{
+  public $idClientes;
+
+  public $Nombre;
+
+  public $Direccion;
+
+  public function __construct(){
+    $this->idClientes = intval($this->idClientes);
+  }
+}
 class Clientes
 {
   private $con;
@@ -40,14 +51,15 @@ class Clientes
   {
     $req = json_decode($request->getbody());
     
-    $sql = "SELECT * FROM CLIENTES ";
-    $response=new stdClass();
+    $sql = "SELECT idClientes, Nombre, Direccion FROM CLIENTES ";
+    $response= array();
     //var_dump($req);
     //die();
       try {
         $statement = $this->con->prepare($sql);    
-        $statement->execute();        
-        $response->result=$statement->fetchall(PDO::FETCH_OBJ);
+        $statement->execute();   
+        $statement->setFetchMode(PDO::FETCH_CLASS, 'Cliente');     
+        $response=$statement->fetchall();
       } catch (Exception $e) {
         $response->mensaje = $e->getMessage();
       }

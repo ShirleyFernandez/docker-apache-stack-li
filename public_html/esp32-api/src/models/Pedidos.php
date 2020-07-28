@@ -1,4 +1,27 @@
 <?php
+class Pedido{
+  public $idPedidos;
+
+  public $Cantidad;
+
+  public $Tipo_Pedido;
+
+  public $Estado_Pedido;
+
+  public $FK_idProd;
+
+  public $FK_idCli; 
+
+  public function __construct(){
+    $this->idPedidos = intval($this->idPedidos);
+
+    $this->Cantidad = intval($this->Cantidad);
+    
+    $this->FK_idProd = intval($this->FK_idProd);
+
+    $this->FK_idCli = intval($this->FK_idCli);
+  }
+}
 class Pedidos
 {
   private $con;
@@ -44,13 +67,14 @@ class Pedidos
     $req = json_decode($request->getbody());
     
     $sql = "SELECT idPedidos, Cantidad, Tipo_Pedido, Estado_Pedido, FK_idProd, FK_idCli FROM PEDIDOS";
-    $response=new stdClass();
+    $response= array();
     //var_dump($req);
     //die();
       try {
         $statement = $this->con->prepare($sql);     
         $statement->execute();        
-        $response->result=$statement->fetchall(PDO::FETCH_OBJ);
+        $statement->setFetchMode(PDO::FETCH_CLASS, 'Pedido');
+        $response=$statement->fetchall();
       } catch (Exception $e) {
         $response->mensaje = $e->getMessage();
       }

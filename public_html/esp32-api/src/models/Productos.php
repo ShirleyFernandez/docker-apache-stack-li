@@ -1,4 +1,21 @@
 <?php
+
+class Producto{
+  public $idProductos;
+
+  public $Nombre;
+
+  public $Precio;
+
+  public $categoria;
+
+  public function __construct(){
+    $this->idProductos = intval($this->idProductos);
+    
+    $this->Precio = intval($this->Precio);
+  }
+}
+
 class Productos
 {
   private $con;
@@ -42,13 +59,14 @@ class Productos
     $req = json_decode($request->getbody());
     
     $sql = "SELECT idProductos, Nombre, Precio, categoria FROM CATALOGO_PRODUCTOS ";
-    $response=new stdClass();
+    $response= array();
     //var_dump($req);
     //die();
       try {
         $statement = $this->con->prepare($sql);      
         $statement->execute();        
-        $response->result=$statement->fetchall(PDO::FETCH_OBJ);
+        $statement->setFetchMode(PDO::FETCH_CLASS, 'Producto');
+        $response=$statement->fetchall();
       } catch (Exception $e) {
         $response->mensaje = $e->getMessage();
       }
