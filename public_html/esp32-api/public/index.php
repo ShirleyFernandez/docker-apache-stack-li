@@ -45,6 +45,9 @@ include 'funciones/Pedidos.php';
 include 'funciones/Clientes.php';
 include 'funciones/Ventas.php';
 include 'funciones/Productos.php';
+include 'funciones/Cajas.php';
+include 'funciones/Fechas.php';
+include 'funciones/Ultimop.php';
 
 // Run app
 $app->run();

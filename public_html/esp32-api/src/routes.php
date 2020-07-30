@@ -42,4 +42,13 @@ $app->group('/api', function () use ($app) {
     $app->post('/Productos','funcioninsertarProducto');
     $app->get('/Productos','funciongetProductos');
     $app->delete('/Productos','funcionEliminarProducto');
+
+    //Cajas
+    $app->get('/Cajas','funciongetCajas');
+
+    //Fechas
+    $app->get('/Fechas','funciongetFechas');
+
+    //Ultimo Pedido
+    $app->get('/Ultimop','funciongetUP');
 });
